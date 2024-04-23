@@ -4,7 +4,7 @@ on:
     types:
       - closed
     branches:
-      - 'feature/ship-[0-9]+'
+      - 'feature/ship-*'
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,4 +12,3 @@ jobs:
       - run: echo "$EVENT"
         env:
           EVENT: ${{toJSON(github)}}
-          
