@@ -1,0 +1,16 @@
+name: pull_request_closed_feature_regex
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'feature/ship-[0-9]+'
+
+jobs:
+  approved:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$EVENT"
+        env:
+          EVENT: ${{toJSON(github)}}
