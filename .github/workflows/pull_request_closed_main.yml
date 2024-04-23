@@ -1,0 +1,16 @@
+name: Test2
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'main'
+
+jobs:
+  approved:
+    if: >-
+      github.event.pull_request.head.ref =~ 'feature/ship-[0-9]+'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "foo2"
