@@ -1,4 +1,4 @@
-name: Test2
+name: pull_request_closed_main
 
 on:
   pull_request:
@@ -13,4 +13,4 @@ jobs:
       github.event.pull_request.head.ref =~ 'feature/ship-[0-9]+'
     runs-on: ubuntu-latest
     steps:
-      - run: echo "foo2"
+      - run: echo "foo"
