@@ -1,15 +1,15 @@
-name: pull_request_review_submitted_development_approved
+name: pull_request_review_submitted_main_feature_approved
 
 on:
   pull_request_review:
     types:
       - submitted
-    branches:
-      - 'development'
 
 jobs:
   test:
     if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      startsWith(github.event.pull_request.head.ref, 'feature/ship-') &&
       github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
