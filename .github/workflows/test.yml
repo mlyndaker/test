@@ -1,7 +1,10 @@
 name: test
 on:
-  pull_request_review:
-    types: [submitted]
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'feature/ship-\d+'
 jobs:
   test:
     runs-on: ubuntu-latest
