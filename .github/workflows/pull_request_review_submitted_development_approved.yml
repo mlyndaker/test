@@ -1,10 +1,12 @@
-name: test
+name: pull_request_review_submitted_development_approved
+
 on:
   pull_request_review:
     types:
       - submitted
     branches:
       - 'development'
+
 jobs:
   test:
     if: >-
