@@ -4,7 +4,7 @@ on:
     types:
       - closed
     branches:
-      - 'feature/ship-*'
+      - 'main'
 jobs:
   test:
     runs-on: ubuntu-latest
