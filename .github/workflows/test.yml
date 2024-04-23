@@ -1,12 +1,15 @@
 name: test
 on:
-  pull_request:
+  pull_request_review:
     types:
-      - closed
+      - submitted
     branches:
-      - 'main'
+      - 'development'
 jobs:
   test:
+    if: >-
+      github.event.pull_request.head.ref =~ 'feature/ship-[0-9]+' &&
+      github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - run: echo "$EVENT"
