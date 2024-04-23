@@ -1,4 +1,4 @@
-name: Test2
+name: pull_request_closed_development
 
 on:
   pull_request:
