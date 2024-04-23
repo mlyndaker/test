@@ -1,0 +1,16 @@
+name: pull_request_closed_feature_wildcard
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'feature/ship-*'
+
+jobs:
+  approved:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$EVENT"
+        env:
+          EVENT: ${{toJSON(github)}}
