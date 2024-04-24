@@ -9,7 +9,7 @@ jobs:
   greeting_job:
     runs-on: ubuntu-latest
     env:
-      Greeting: ${{ env.TEST }}
+      Greeting: ${TEST}
     steps:
       - name: "Test"
         run: echo ${{ env.TEST }}
