@@ -12,7 +12,7 @@ jobs:
       Greeting: ${TEST}
     steps:
       - name: "Test"
-        run: echo ${{ env.TEST }}
+        run: echo $Greeting $First_Name ${{ env.TEST }}
         env:
           First_Name: ${{ env.TEST }}
   
