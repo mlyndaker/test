@@ -9,10 +9,10 @@ jobs:
   greeting_job:
     runs-on: ubuntu-latest
     env:
-      Greeting: ${TEST}
+      Greeting: test
     steps:
       - name: "Test"
         run: echo $Greeting $First_Name ${{ env.TEST }}
         env:
-          First_Name: ${{ env.TEST }}
+          First_Name: $Greeting-${TEST}
   
