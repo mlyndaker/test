@@ -18,7 +18,7 @@ jobs:
           exists=$?
 
           # skip service upgrade if "replace" is not enabled
-          if [ $exists -eq 0 ] && [ "true" == "true" ]; then
+          if [ $exists -eq 0 ] && [ "true" != "true" ]; then
             echo "::notice:: Helm release ship-9999-backend exists, skipping service create"
             exit 0
           fi
