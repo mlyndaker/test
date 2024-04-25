@@ -2,14 +2,12 @@ name: TEST
 
 on: push
 
-env:
-  TEST: test
-
 jobs:
   build:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
           repository: shipangel/frontend-app
           ref: development
           ssh-key: ${{ secrets.SSH_KEY }}
