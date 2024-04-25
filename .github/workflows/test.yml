@@ -6,4 +6,7 @@ jobs:
   filter:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJson(github) }}
+      - run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
