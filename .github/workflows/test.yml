@@ -9,6 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          repository: shipangel/frontend-app
-          ref: development
-          ssh-key: ${{ secrets.SSH_KEY }}
+          repository: ""
+          ref: ""
+          ssh-key: ""
