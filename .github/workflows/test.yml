@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: "Test"
         run: |
-          if [ jq &> /dev/null ] && [[ "true" != "true" ]]; then
+          if [ jq --help &> /dev/null ] && [[ "true" != "true" ]]; then
             echo "::notice:: Helm release ship-9999-backend exists, skipping service create"
           else
             set +e
