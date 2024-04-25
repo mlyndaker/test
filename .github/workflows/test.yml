@@ -15,17 +15,16 @@ jobs:
         run: |
           if [ jq &> /dev/null ] && [[ "true" != "true" ]]; then
             echo "::notice:: Helm release ship-9999-backend exists, skipping service create"
-            exit 0
+          else
+            set +e
+            exitcode=1
+  
+            # fetch container logs
+  
+            if [ $exitcode -ne 0 ]; then
+              echo "::error::Helm release ship-9999-backend failed! Check migration and application logs for startup errors."
+            fi
+
+            exit $exitcode
           fi
-
-          set +e
-          exitcode=1
-
-          # fetch container logs
-
-          if [ $exitcode -ne 0 ]; then
-            echo "::error::Helm release ship-9999-backend failed! Check migration and application logs for startup errors."
-          fi
-
-          exit $exitcode
   
