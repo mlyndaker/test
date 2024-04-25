@@ -6,31 +6,10 @@ env:
   TEST: test
 
 jobs:
-  greeting_job:
-    runs-on: ubuntu-latest
-    env:
-      Greeting: test
+  build:
     steps:
-      - name: "Test"
-        run: |
-          set +e
-          jq --help &> /dev/null
-          exists=$?
-
-          # skip service upgrade if "replace" is not enabled
-          if [ $exists -eq 0 ] && [ "true" != "true" ]; then
-            echo "::notice:: Helm release ship-9999-backend exists, skipping service create"
-            exit 0
-          fi
-
-          # perform upgrade
-          exitcode=0
-
-          # fetch container logs
-          
-          # check for failures
-          if [ $exitcode -ne 0 ]; then
-            echo "::error::Helm release ship-9999-backend failed! Check migration and application logs for startup errors."
-          fi
-
-          exit $exitcode
+      - name: Checkout
+        uses: actions/checkout@v4
+          repository: shipangel/frontend-app
+          ref: development
+          ssh-key: ${{ secrets.SSH_KEY }}
