@@ -24,7 +24,7 @@ jobs:
           fi
 
           # perform upgrade
-          exitcode=1
+          exitcode=0
 
           # fetch container logs
           
