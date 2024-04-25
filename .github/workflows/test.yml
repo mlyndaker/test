@@ -1,14 +1,16 @@
-name: TEST
+name: Remove EKS (test)
 
-on: push
+on:
+  pull_request:
+    types: [closed]
 
 jobs:
-  build:
+  filter:
+    name: Foo
+    if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      startsWith(github.event.pull_request.head.ref, 'feature/ship-')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          repository: ""
-          ref: ""
-          ssh-key: ""
+      - run: echo foo
+      
