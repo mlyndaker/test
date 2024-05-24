@@ -10,7 +10,7 @@ jobs:
   check-reviews:
     runs-on: ubuntu-latest
     outputs:
-      reviews: ${{ steps.reviews.outputs.state }}
+      state: ${{ steps.reviews.outputs.state }}
     steps:
       - id: reviews
         env:
@@ -22,10 +22,11 @@ jobs:
               --json reviewDecision \
               --jq '.reviewDecision')
           echo "state=$state" >> "$GITHUB_OUTPUT"
+
   filter:
     runs-on: ubuntu-latest
     needs: check-reviews
-    if: needs.check-reviews.event.review.state == 'APPROVED'
+    if: needs.check-reviews.outputs.state == 'APPROVED'
     steps:
       - run: |
           cat << OBJECT
