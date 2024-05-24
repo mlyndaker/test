@@ -1,15 +1,14 @@
-name: Remove EKS (test)
+name: Test
 
 on:
   pull_request:
-    types: [closed]
+    types: [committed]
+  pull_request_review:
+    types: [submitted]
 
 jobs:
   filter:
     runs-on: ubuntu-latest
-    if: >-
-      github.event.pull_request.base.ref == 'main' &&
-      startsWith(github.event.pull_request.head.ref, 'feature/ship-')
     steps:
       - run: |
           cat << OBJECT
