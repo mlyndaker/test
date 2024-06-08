@@ -6,6 +6,7 @@ on:
 jobs:
   filter:
     runs-on: ubuntu-latest
+    environment: ${{ github.base_ref }}
     steps:
       - run: |
           cat << OBJECT
