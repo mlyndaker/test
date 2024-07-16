@@ -9,6 +9,7 @@ jobs:
     environment: ${{ github.base_ref }}
     steps:
       - run: |
-          cat << OBJECT
-          ${{ toJson(github) }}
-          OBJECT
+          set +e
+          set -o pipefail
+
+          if [[ "pending-foo" =~ pending* ]]; then echo "foo"; fi
