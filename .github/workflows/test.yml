@@ -3,12 +3,23 @@ name: Test
 on: push
 
 jobs:
-  filter:
-    runs-on: ubuntu-latest
-    environment: ${{ github.base_ref }}
-    steps:
-      - run: |
-          set +e
-          set -o pipefail
 
-          if [[ "pending-foo" =~ pending* ]]; then echo "foo"; fi
+  job0:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - run: echo "build"
+
+  job1:
+    runs-on: ubuntu-latest
+    environment: staging
+    needs: job0
+    steps:
+      - run: echo "deploy staging"
+
+  job2:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: job0
+    steps:
+      - run: echo "deploy production"
