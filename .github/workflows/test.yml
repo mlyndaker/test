@@ -6,7 +6,7 @@ jobs:
   job0:
     uses: ./.github/workflows/build.yml
     with:
-      environment: production
+      environment: staging
     secrets:
       test: ${{ secrets.test }}
       
