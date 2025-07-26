@@ -1,7 +1,7 @@
 on:
   workflow_call:
     secrets:
-      test-value:
+      test:
         required: true
 
 jobs:
@@ -14,4 +14,4 @@ jobs:
       - name: Test
         run: |
           env
-          echo "${secrets.test-value}"
+          echo "${secrets.test}"
