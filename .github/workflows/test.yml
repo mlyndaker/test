@@ -3,23 +3,5 @@ name: Test
 on: push
 
 jobs:
-
   job0:
-    runs-on: ubuntu-latest
-    environment: staging
-    steps:
-      - run: echo "build"
-
-  job1:
-    runs-on: ubuntu-latest
-    environment: staging
-    needs: job0
-    steps:
-      - run: echo "deploy staging"
-
-  job2:
-    runs-on: ubuntu-latest
-    environment: production
-    needs: job0
-    steps:
-      - run: echo "deploy production"
+    uses: ./.github/workflows/build.yml
