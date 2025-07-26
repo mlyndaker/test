@@ -5,4 +5,8 @@ on: push
 jobs:
   job0:
     uses: ./.github/workflows/build.yml
-    secrets: inherit
+    with:
+      environment: production
+    secrets:
+      test: ${{ secrets.test }}
+      
