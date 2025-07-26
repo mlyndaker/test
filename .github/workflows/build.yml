@@ -13,5 +13,4 @@ jobs:
     steps:
       - name: Test
         run: |
-          env
           echo "${secrets.test}"
