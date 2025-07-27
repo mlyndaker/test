@@ -7,6 +7,3 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       environment: staging
-    secrets:
-      test: ${{ secrets.test }}
-      
