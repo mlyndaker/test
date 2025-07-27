@@ -4,9 +4,6 @@ on:
       environment:
         required: true
         type: string
-    secrets:
-      test:
-        required: true
 
 jobs:
   build-and-push:
