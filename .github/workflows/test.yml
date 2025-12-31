@@ -3,7 +3,18 @@ name: Test
 on: push
 
 jobs:
-  job0:
-    uses: ./.github/workflows/build.yml
-    with:
-      environment: staging
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: containers/${{ github.event.repository.name }}
+          tags: |
+            type=sha,priority=9999,prefix={{branch}}{{tag}}-,suffix=-${{ github.run_number }}
+            type=ref,event=pr
+            type=ref,event=branch
+            type=raw,value=latest,enable={{is_default_branch}}
+      - run: echo ${{ steps.meta.outputs.tags }}
